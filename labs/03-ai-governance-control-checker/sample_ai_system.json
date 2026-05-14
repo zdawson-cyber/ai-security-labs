@@ -1,0 +1,15 @@
+{
+  "system_name":"AI Security Assistant",
+  "system_owner":"Cybersecurity Team",
+  "use_case":"Assist analyst with summarizing security findings and drafting remediation notes.",
+  "business_purpose":"Improve security documentation speed and support GRC workflows.",
+  "intended_users":["Security Analysts", "GRC Analyst", "Cloud Security Team"],
+  "data_handling":"Users should not submit passwords, API keys, regulated data, or confidential customer data. Senstitive data should be redacted before use.",
+  "human_oversight": "Human review is required before using AI-generated recommendations in official reports or remediation plans.",
+  "prompt_injection_controls": "The system should detect prompt injection, jailbreak language, and attempts to reveal system instructions.",
+  "output_validation": "AI outputs should be reviewed for accuracy, completeness, and hallucinations before use.",
+  "monitoring_logging": "Risky prompts, blocked prompts, and security-related events should be logged for review.",
+  "risk_response_plan": "High-risk AI outputs should be escalated to the security owner for review and remediation tracking.",
+  "access_control": "Access should be limited to approved users using least privilege and role-based access control.",
+  "user_disclosure": "Users should be informed that AI-generated content must be reviewed before operational use."
+}
