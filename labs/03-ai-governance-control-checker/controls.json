@@ -1,0 +1,112 @@
+[
+  {
+    "control_id": "AI-GOV-001",
+    "control_name": "AI System Owner Assigned",
+    "category": "Govern",
+    "risk_area": "Accountability",
+    "description": "The AI system should have a documented business or technical owner.",
+    "required_fields": ["system_owner"],
+    "keywords": ["owner", "accountable", "responsible"],
+    "weight": 10,
+    "recommendation": "Assign and document an accountable AI system owner."
+  },
+  {
+    "control_id": "AI-GOV-002",
+    "control_name": "AI Use Case Documented",
+    "category": "Map",
+    "risk_area": "System Context",
+    "description": "The AI system should have a clear documented use case and business purpose.",
+    "required_fields": ["use_case", "business_purpose"],
+    "keywords": ["use case", "purpose", "business need"],
+    "weight": 10,
+    "recommendation": "Document the AI use case, intended users, and business purpose."
+  },
+  {
+    "control_id": "AI-GOV-003",
+    "control_name": "Human Oversight Defined",
+    "category": "Govern",
+    "risk_area": "Human Oversight",
+    "description": "The AI system should define when humans review, approve, or override AI outputs.",
+    "required_fields": ["human_oversight"],
+    "keywords": ["human review", "approval", "oversight", "manual review"],
+    "weight": 15,
+    "recommendation": "Define human review requirements for high-risk AI outputs or decisions."
+  },
+  {
+    "control_id": "AI-GOV-004",
+    "control_name": "Sensitive Data Handling Documented",
+    "category": "Map",
+    "risk_area": "Data Privacy",
+    "description": "The AI system should document whether sensitive data is used, processed, stored, or restricted.",
+    "required_fields": ["data_handling"],
+    "keywords": ["sensitive data", "pii", "confidential", "redaction", "data handling"],
+    "weight": 15,
+    "recommendation": "Document data handling rules and prevent unnecessary sensitive data exposure."
+  },
+  {
+    "control_id": "AI-GOV-005",
+    "control_name": "Prompt Injection Risk Addressed",
+    "category": "Measure",
+    "risk_area": "Prompt Injection",
+    "description": "The AI system should include safeguards against prompt injection and jailbreak attempts.",
+    "required_fields": ["prompt_injection_controls"],
+    "keywords": ["prompt injection", "jailbreak", "input validation", "system prompt protection"],
+    "weight": 15,
+    "recommendation": "Add prompt injection detection, input validation, and system prompt protection."
+  },
+  {
+    "control_id": "AI-GOV-006",
+    "control_name": "Output Review or Validation Defined",
+    "category": "Measure",
+    "risk_area": "Output Reliability",
+    "description": "The AI system should define how outputs are reviewed, validated, or quality checked.",
+    "required_fields": ["output_validation"],
+    "keywords": ["validate", "review", "quality check", "accuracy", "hallucination"],
+    "weight": 10,
+    "recommendation": "Define validation steps for AI outputs, especially for high-impact use cases."
+  },
+  {
+    "control_id": "AI-GOV-007",
+    "control_name": "Logging and Monitoring Planned",
+    "category": "Manage",
+    "risk_area": "Monitoring",
+    "description": "The AI system should define how usage, errors, risky prompts, or security events are logged.",
+    "required_fields": ["monitoring_logging"],
+    "keywords": ["logging", "monitoring", "audit trail", "security event", "prompt logs"],
+    "weight": 10,
+    "recommendation": "Add logging and monitoring for AI usage, risky prompts, and system errors."
+  },
+  {
+    "control_id": "AI-GOV-008",
+    "control_name": "Risk Response Plan Documented",
+    "category": "Manage",
+    "risk_area": "Risk Treatment",
+    "description": "The AI system should include a documented plan for responding to identified risks.",
+    "required_fields": ["risk_response_plan"],
+    "keywords": ["risk response", "mitigation", "remediation", "incident response"],
+    "weight": 10,
+    "recommendation": "Document how AI risks will be mitigated, accepted, transferred, or escalated."
+  },
+  {
+    "control_id": "AI-GOV-009",
+    "control_name": "Access Control Defined",
+    "category": "Govern",
+    "risk_area": "Access Control",
+    "description": "The AI system should define who can access, configure, or administer the system.",
+    "required_fields": ["access_control"],
+    "keywords": ["rbac", "least privilege", "access control", "admin access"],
+    "weight": 10,
+    "recommendation": "Define role-based access control and apply least privilege."
+  },
+  {
+    "control_id": "AI-GOV-010",
+    "control_name": "User Disclosure or Usage Notice Provided",
+    "category": "Govern",
+    "risk_area": "Transparency",
+    "description": "Users should be informed when they are interacting with or relying on an AI system.",
+    "required_fields": ["user_disclosure"],
+    "keywords": ["disclosure", "notice", "ai generated", "transparency"],
+    "weight": 5,
+    "recommendation": "Provide users with a clear AI usage notice or disclosure."
+  }
+]
