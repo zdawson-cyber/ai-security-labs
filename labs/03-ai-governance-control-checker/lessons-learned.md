@@ -29,6 +29,20 @@ If the script fails, check:
 - Python is installed and working
 - The report file is not open in another program
 
+## Test Results
+
+The AI Governance Control Checker successfully reviewed the sample AI system profile and generated a governance readiness score of 88.63%.
+
+The system received a readiness level of Strong, but several controls returned Partial results. This showed that the checker was able to identify areas where documentation existed but could be improved.
+
+Partial results included:
+
+- AI-GOV-002: AI Use Case Documented
+- AI-GOV-007: Logging and Monitoring Planned
+- AI-GOV-010: User Disclosure or Usage Notice Provided
+
+This helped validate that the tool was not simply passing every control. It provided a more realistic governance assessment by identifying documentation gaps and improvement areas.
+
 ## Portfolio Reflection
 
 This lab helped me connect cybersecurity, GRC, Python automation, and AI governance. It demonstrates how a control-based review process can be applied to AI systems in a way that supports security documentation, audit readiness, and responsible AI usage.
