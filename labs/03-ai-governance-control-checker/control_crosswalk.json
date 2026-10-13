@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "disclaimer": "Non-authoritative portfolio mapping. Control presence does not establish implemented effectiveness, NIST AI RMF conformance, federal ATO, ISO certification, or SOC 2 attestation.",
+  "mappings": [
+    {
+      "control_id": "AI-GOV-001",
+      "ai_rmf_function": "GOVERN",
+      "nist_800_53_reference": "PM-1",
+      "implementation_expectation": "Accountable AI system owner",
+      "evidence_field": "system_owner",
+      "owner": "GRC lead",
+      "remediation": "Document owner and approval authority",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-002",
+      "ai_rmf_function": "MAP",
+      "nist_800_53_reference": "RA-3",
+      "implementation_expectation": "Use-case boundaries and risk context",
+      "evidence_field": "use_case",
+      "owner": "Business owner",
+      "remediation": "Record purpose, user groups and impact",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-003",
+      "ai_rmf_function": "GOVERN",
+      "nist_800_53_reference": "CA-7",
+      "implementation_expectation": "Human review before consequential decisions",
+      "evidence_field": "human_oversight",
+      "owner": "AI product owner",
+      "remediation": "Document mandatory human review gate",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-004",
+      "ai_rmf_function": "MAP",
+      "nist_800_53_reference": "AC-4",
+      "implementation_expectation": "Sensitive data access/flow restrictions",
+      "evidence_field": "data_handling",
+      "owner": "Privacy lead",
+      "remediation": "Document and validate prohibited data flows",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-005",
+      "ai_rmf_function": "MEASURE",
+      "nist_800_53_reference": "SI-10",
+      "implementation_expectation": "Prompt injection testing and monitoring",
+      "evidence_field": "prompt_injection_controls",
+      "owner": "AppSec team",
+      "remediation": "Implement and test adversarial input handling",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-006",
+      "ai_rmf_function": "MEASURE",
+      "nist_800_53_reference": "CA-2",
+      "implementation_expectation": "AI output quality evaluation",
+      "evidence_field": "output_validation",
+      "owner": "Model owner",
+      "remediation": "Establish eval criteria and reviewer evidence",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-007",
+      "ai_rmf_function": "MANAGE",
+      "nist_800_53_reference": "AU-6",
+      "implementation_expectation": "Monitoring and event review",
+      "evidence_field": "monitoring_logging",
+      "owner": "Security operations",
+      "remediation": "Implement logging, alerting and retention",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-008",
+      "ai_rmf_function": "MANAGE",
+      "nist_800_53_reference": "IR-4",
+      "implementation_expectation": "Risk treatment and incident process",
+      "evidence_field": "risk_response_plan",
+      "owner": "Risk owner",
+      "remediation": "Define escalation and corrective actions",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-009",
+      "ai_rmf_function": "GOVERN",
+      "nist_800_53_reference": "AC-2",
+      "implementation_expectation": "Role-based access and provisioning",
+      "evidence_field": "access_control",
+      "owner": "IAM owner",
+      "remediation": "Define and periodically review authorized users",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    },
+    {
+      "control_id": "AI-GOV-010",
+      "ai_rmf_function": "GOVERN",
+      "nist_800_53_reference": "PT-5",
+      "implementation_expectation": "Notice and transparency",
+      "evidence_field": "user_disclosure",
+      "owner": "Policy owner",
+      "remediation": "Publish and verify AI use notice",
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+    }
+  ]
+}
