@@ -60,3 +60,24 @@ The checker:
 
 ```powershell
 py ai_governance_checker.py
+
+
+## AI Governance Control Mapping — Completed
+
+The original narrative [control mapping](control_mapping.md) is now backed by a machine-readable [10-control crosswalk](control_crosswalk.json) and a deterministic [mapping validator](validate_crosswalk.py), plus five [unit tests](test_crosswalk.py) and [GitHub Actions CI](../../.github/workflows/ai-governance-mapping.yml).
+
+| Artifact | Purpose |
+|---|---|
+| `control_crosswalk.json` | Map all 10 AI-GOV controls to NIST AI RMF functions, illustrative NIST SP 800-53 identifiers, owners, expected implementation and evidence fields |
+| `validate_crosswalk.py` | Check exact coverage, duplicate IDs, valid evidence fields, and presence of synthetic AI system documentation |
+| `test_crosswalk.py` | Validate complete mapping and negative cases |
+| `.github/workflows/ai-governance-mapping.yml` | Automatically run tests on relevant changes |
+
+**Reproduce locally (from repository root):**
+
+```bash
+python -m unittest discover -s labs/03-ai-governance-control-checker -p test_crosswalk.py -v
+python labs/03-ai-governance-control-checker/validate_crosswalk.py
+```
+
+**Interpretation:** A documented field does not prove a control is effective. Framework alignments are non-authoritative and require qualified review; the synthetic example does not establish NIST, FedRAMP, CMMC, ISO, or SOC 2 compliance. The project contains no client/CUI/classified evidence.
