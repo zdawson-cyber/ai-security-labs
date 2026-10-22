@@ -1,83 +1,56 @@
-# Lab 03: AI Governance Control Checker
+# Lab 03: AI Governance Control Mapping and Checker
+
+**Status: Complete as a synthetic portfolio exercise.** Operational control effectiveness remains unverified.
 
 ## Objective
 
-Build a Python-based AI governance checker that reviews an AI system profile against basic governance, security, privacy, and risk management controls.
+Map AI risks to selected NIST-style controls, separate policy assertions from implementation evidence, and generate a repeatable evidence-gap review for a fictional AI Security Assistant that drafts security findings and remediation notes. No deployed AI service, customer data, CUI, or classified evidence is used.
 
-## Why This Lab Matters
+## Security concepts
 
-AI systems create new governance and security risks, including prompt injection, sensitive data leakage, lack of human oversight, unclear ownership, poor documentation, and weak monitoring.
+AI risk ownership; scope and data flows; human oversight; prompt injection; data leakage; output reliability; access management; audit review; incident response; transparency. The ten local AI-GOV identifiers are lab controls, not NIST control identifiers.
 
-This lab demonstrates how Python can support AI governance by checking whether an AI system has documented controls, risk owners, monitoring, human review, data protection, and security safeguards.
+## Architecture and workflow
 
-## Security and Governance Concepts Demonstrated
+`controls.json` + `control_crosswalk.json` + `sample_ai_system.json` → `validate_crosswalk.py` → `generate_mapping_report.py` → `evidence_gap_report.md`.
 
-- AI governance
-- AI risk management
-- Secure AI usage
-- Prompt injection awareness
-- Sensitive data protection
-- Human oversight
-- Risk ownership
-- Control validation
-- GRC-style reporting
-- Python automation
+1. Define the AI use case, boundary, users and data paths.
+2. Describe a concrete failure scenario for each local control.
+3. Select a relevant SP 800-53 Rev. 5 base control and explain the connection and limits. AI RMF functions provide organizing context; they are not one-to-one equivalences.
+4. Check every required profile field, mapping coverage and metadata.
+5. Record evidence to request and a validation step. Documentation presence stays separate from effectiveness.
+6. Have actual system owners tailor requirements, collect evidence, assign dates, and approve risk treatment before operational use.
 
-## Framework Inspiration
+## Run from repository root
 
-This lab is inspired by:
+Python 3.12; standard library only; no cloud account, API keys, package installation or model calls.
 
-- NIST AI Risk Management Framework functions: Govern, Map, Measure, and Manage
-- NIST Generative AI Profile concepts
-- OWASP Top 10 for LLM Applications risks
-- GRC control assessment workflows
+```bash
+python -m unittest discover -s labs/03-ai-governance-control-checker -p 'test_*.py' -v
+python labs/03-ai-governance-control-checker/validate_crosswalk.py
+python labs/03-ai-governance-control-checker/generate_mapping_report.py
+python labs/03-ai-governance-control-checker/ai_governance_checker.py
+```
 
-This is not an official compliance assessment. It is a portfolio lab that demonstrates how governance controls can be reviewed using Python automation.
+The validator exits 0 for complete synthetic documentation, 2 for missing documentation, and raises an error for invalid mappings. Exit 0 does not mean compliance. The report generators overwrite their respective checked-in reports. Expected mapping result: 10 documented controls, 0 independently verified implementations.
 
-## Lab Files
+## Artifacts
 
 | File | Purpose |
 |---|---|
-| `ai_governance_checker.py` | Main Python script |
-| `controls.json` | Control library used by the checker |
-| `sample_ai_system.json` | Sample AI system profile being assessed |
-| `governance_report.md` | Generated AI governance report |
-| `lessons-learned.md` | Lab reflection |
-| `screenshots/` | Evidence screenshots |
+| `controls.json` | Ten local control definitions and required fields |
+| `control_crosswalk.json` | Risk, framework reference, rationale, owner, evidence request and validation procedure |
+| `validate_crosswalk.py`, `test_crosswalk.py` | Mapping coverage, metadata and missing-field validation |
+| `generate_mapping_report.py`, `evidence_gap_report.md` | Deterministic evidence-gap output |
+| `ai_governance_checker.py`, `governance_report.md` | Legacy keyword-based documentation heuristic; not an effectiveness assessment |
+| `control_mapping.md` | Mapping method, rationale and official source references |
+| `lessons-learned.md`, `portfolio_notes.md` | Technical takeaways and bounded portfolio language |
+| `screenshots/` | Existing historical checker output; not proof of current operational controls |
 
-## How the Checker Works
+## Risk analysis and limits
 
-The checker:
+All ten synthetic profile areas contain policy statements. None supplies approved operational artifacts or observed test results. Prioritize data-flow enforcement, injection resilience, human review, output evaluation and unauthorized-access tests before deployment. The companion gap report proposes evidence and validation for each risk; it does not claim those tests were performed.
 
-1. Loads a sample AI system profile.
-2. Loads a JSON control library.
-3. Reviews whether the system profile contains evidence for each control.
-4. Assigns pass, partial, or fail status.
-5. Calculates a governance readiness score.
-6. Generates a Markdown report.
+The legacy keyword heuristic searches the entire profile and can reward unrelated words or even negative statements. Its score is retained for continuity and explicitly labeled a documentation heuristic. It must not be used to approve deployment, calculate residual risk, or represent compliance.
 
-## How to Run
-
-```powershell
-py ai_governance_checker.py
-
-
-## AI Governance Control Mapping — Completed
-
-The original narrative [control mapping](control_mapping.md) is now backed by a machine-readable [10-control crosswalk](control_crosswalk.json) and a deterministic [mapping validator](validate_crosswalk.py), plus five [unit tests](test_crosswalk.py) and [GitHub Actions CI](../../.github/workflows/ai-governance-mapping.yml).
-
-| Artifact | Purpose |
-|---|---|
-| `control_crosswalk.json` | Map all 10 AI-GOV controls to NIST AI RMF functions, illustrative NIST SP 800-53 identifiers, owners, expected implementation and evidence fields |
-| `validate_crosswalk.py` | Check exact coverage, duplicate IDs, valid evidence fields, and presence of synthetic AI system documentation |
-| `test_crosswalk.py` | Validate complete mapping and negative cases |
-| `.github/workflows/ai-governance-mapping.yml` | Automatically run tests on relevant changes |
-
-**Reproduce locally (from repository root):**
-
-```bash
-python -m unittest discover -s labs/03-ai-governance-control-checker -p test_crosswalk.py -v
-python labs/03-ai-governance-control-checker/validate_crosswalk.py
-```
-
-**Interpretation:** A documented field does not prove a control is effective. Framework alignments are non-authoritative and require qualified review; the synthetic example does not establish NIST, FedRAMP, CMMC, ISO, or SOC 2 compliance. The project contains no client/CUI/classified evidence.
+This exercise is a small manually curated mapping, not an official NIST crosswalk, complete control baseline, ATO package, or production governance platform. Bias/fairness evaluation, supplier assurance, model changes, availability and broader privacy obligations need separate scoping.

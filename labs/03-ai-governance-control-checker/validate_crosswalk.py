@@ -21,13 +21,17 @@ def check(controls, crosswalk, system):
             raise ValueError("Mapped evidence field is not in control catalog: " + cid)
         if m["ai_rmf_function"] not in {"GOVERN", "MAP", "MEASURE", "MANAGE"}:
             raise ValueError("Invalid AI RMF function")
-        for name in ("nist_800_53_reference", "implementation_expectation", "owner", "remediation"):
+        for name in ("nist_800_53_reference", "implementation_expectation", "owner", "remediation", "risk_scenario", "mapping_rationale", "evidence_example", "validation_step", "priority"):
             if not isinstance(m.get(name), str) or not m[name].strip():
                 raise ValueError("Missing mapping metadata: " + cid + "." + name)
-        value = system.get(field)
-        present = isinstance(value, str) and bool(value.strip())
+        fields = catalog[cid]["required_fields"]
+        missing_fields = [f for f in fields if not isinstance(system.get(f), str) or not system[f].strip()]
+        present = not missing_fields
         results.append({"control_id": cid, "documentation_present": present,
-                        "evidence_field": field, "owner": m["owner"],
+                        "evidence_field": field, "missing_fields": missing_fields, "owner": m["owner"],
+                        "risk_scenario": m["risk_scenario"], "nist_reference": m["nist_800_53_reference"],
+                        "implementation_status": "Not verified", "evidence_gap": m["evidence_example"],
+                        "validation_step": m["validation_step"], "priority": m["priority"],
                         "finding": "Documentation present; not independently verified" if present else "Missing documentation"})
     return {"total": len(results),
             "documented": sum(r["documentation_present"] for r in results),

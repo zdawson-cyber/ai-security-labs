@@ -6,9 +6,10 @@ from pathlib import Path
 from datetime import date
 
 
-CONTROLS_FILE = "controls.json"
-SYSTEM_PROFILE_FILE = "sample_ai_system.json"
-REPORT_FILE = "governance_report.md"
+ROOT = Path(__file__).resolve().parent
+CONTROLS_FILE = ROOT / "controls.json"
+SYSTEM_PROFILE_FILE = ROOT / "sample_ai_system.json"
+REPORT_FILE = ROOT / "governance_report.md"
 
 
 def load_json(file_path):
@@ -134,16 +135,18 @@ def generate_markdown_report(system_profile, results, summary):
     lines.append("")
     lines.append(f"**Report Date:** {date.today()}")
     lines.append("")
+    lines.append("Synthetic profile only. Keyword matches and scores do not verify implementation, effectiveness, risk reduction, or compliance. See evidence_gap_report.md for the mapping and unverified evidence requirements.")
+    lines.append("")
     lines.append("## System Reviewed")
     lines.append("")
     lines.append(f"**System Name:** {system_profile.get('system_name', 'Not documented')}")
     lines.append(f"**System Owner:** {system_profile.get('system_owner', 'Not documented')}")
     lines.append(f"**Use Case:** {system_profile.get('use_case', 'Not documented')}")
     lines.append("")
-    lines.append("## Governance Readiness Summary")
+    lines.append("## Documentation Heuristic Summary")
     lines.append("")
-    lines.append(f"**Readiness Score:** {summary['readiness_score']}%")
-    lines.append(f"**Readiness Level:** {summary['readiness_level']}")
+    lines.append(f"**Documentation heuristic score:** {summary['readiness_score']}%")
+    lines.append(f"**Legacy heuristic label (not risk or effectiveness):** {summary['readiness_level']}")
     lines.append("")
     lines.append("| Status | Count |")
     lines.append("|---|---:|")
@@ -207,8 +210,8 @@ def print_console_summary(system_profile, results, summary):
     print("AI Governance Control Checker")
     print("=" * 45)
     print(f"System Reviewed: {system_profile.get('system_name', 'Not documented')}")
-    print(f"Readiness Score: {summary['readiness_score']}%")
-    print(f"Readiness Level: {summary['readiness_level']}")
+    print(f"Documentation heuristic score: {summary['readiness_score']}%")
+    print(f"Legacy heuristic label: {summary['readiness_level']}")
     print("\nControl Results:")
 
     for result in results:

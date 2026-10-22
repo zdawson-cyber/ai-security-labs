@@ -1,69 +1,121 @@
 # AI Governance Control Mapping
 
-## Project Purpose
+## Method and scope
 
-This mapping project demonstrates how AI governance controls can be translated into security, privacy, risk, and compliance expectations across multiple frameworks.
+This manually curated educational crosswalk uses NIST AI RMF 1.0 functions and selected SP 800-53 Rev. 5 base controls. Each mapping is an interpretation requiring system-specific tailoring; control titles and full statements should be checked against the official catalog. It does not select a federal baseline or assert compliance.
 
-The goal is not to claim an official SOC 2 or ISO/IEC 27001 audit mapping. Instead, this project shows how a security engineer with NIST/RMF experience can interpret AI governance requirements and align them to familiar control concepts such as ownership, risk assessment, access control, monitoring, incident response, vendor risk, and evidence collection.
+The sample is a fictional analyst assistant. Its policy statements are inputs to evidence collection, not proof that safeguards operate. The validator checks all required documentation fields; the companion report lists unverified implementation evidence.
 
-## Mapping Approach
+## Risk-to-control rationale
 
-The AI governance controls in this lab are mapped to the following control families and framework concepts:
+### AI-GOV-001: Unowned AI deployment delays risk decisions
 
-* **NIST AI RMF:** Govern, Map, Measure, Manage
-* **NIST SP 800-53:** Security and privacy control families such as Access Control, Audit and Accountability, Risk Assessment, Incident Response, Configuration Management, System and Information Integrity, and Supply Chain Risk Management
-* **SOC 2 Concepts:** Security, confidentiality, privacy, monitoring, control activities, logical access, system operations, change management, and risk mitigation
-* **ISO/IEC 27001 Concepts:** Information security management, risk treatment, access control, asset/information handling, supplier security, logging, monitoring, incident management, policy governance, and continual improvement
+**AI RMF function:** GOVERN. **SP 800-53 reference:** PM-2 — Information Security Program Leadership Role.
 
-## AI Governance Control Crosswalk
+A designated program leadership role supports accountability; a system owner record alone does not satisfy PM-2.
 
-| AI Control ID | AI Governance Control                    | NIST AI RMF Function | NIST SP 800-53 Alignment                                                                                | SOC 2 Alignment                                                 | ISO/IEC 27001 Alignment                                                            | Example Evidence                                                                |
-| ------------- | ---------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| AI-GOV-001    | AI System Owner Assigned                 | Govern               | Program Management, Planning, Risk Assessment                                                           | Control Environment, Communication, Risk Management             | Roles and responsibilities, governance, accountability                             | System owner record, RACI, intake form, approval workflow                       |
-| AI-GOV-002    | AI Use Case Documented                   | Map                  | Planning, Risk Assessment, System and Services Acquisition                                              | Risk Assessment, Communication, Control Activities              | ISMS scope, asset inventory, risk assessment, acceptable use                       | AI use case intake form, business purpose, intended users, data flow notes      |
-| AI-GOV-003    | Human Oversight Defined                  | Govern / Measure     | Risk Assessment, Assessment/Authorization/Monitoring, System and Information Integrity                  | Control Activities, Monitoring Activities, Risk Mitigation      | Operational control, review/approval process, governance responsibility            | Human review process, approval criteria, escalation steps                       |
-| AI-GOV-004    | Sensitive Data Handling Documented       | Map                  | Access Control, PII Processing and Transparency, System and Communications Protection, Media Protection | Confidentiality, Privacy, Logical Access, Data Protection       | Information classification, acceptable use, data handling, data leakage prevention | Data handling rules, redaction guidance, restricted data list, DLP expectations |
-| AI-GOV-005    | Prompt Injection Risk Addressed          | Measure              | Risk Assessment, System and Information Integrity, Configuration Management                             | System Operations, Risk Mitigation, Control Activities          | Secure development, vulnerability management, monitoring, technical controls       | Prompt injection test cases, blocked prompt examples, input validation notes    |
-| AI-GOV-006    | Output Review or Validation Defined      | Measure              | Assessment/Authorization/Monitoring, Risk Assessment, System and Information Integrity                  | Monitoring Activities, Control Activities, Processing Integrity | Review procedures, quality control, operational monitoring                         | Output review checklist, hallucination review notes, validation procedure       |
-| AI-GOV-007    | Logging and Monitoring Planned           | Manage               | Audit and Accountability, System and Information Integrity, Continuous Monitoring                       | System Operations, Monitoring, Incident Detection               | Logging, monitoring, event review, security operations                             | Log sources, monitoring plan, risky prompt log, alerting workflow               |
-| AI-GOV-008    | Risk Response Plan Documented            | Manage               | Risk Assessment, Incident Response, Plan of Action & Milestones, Continuous Monitoring                  | Risk Mitigation, Incident Response, Control Activities          | Risk treatment, incident management, lessons learned, corrective action            | Risk register, remediation plan, escalation path, POA&M-style tracker           |
-| AI-GOV-009    | Access Control Defined                   | Govern               | Access Control, Identification and Authentication, Least Privilege                                      | Logical Access, Security, Confidentiality                       | Access control, identity management, access rights review                          | RBAC matrix, approved user list, admin access review, least privilege notes     |
-| AI-GOV-010    | User Disclosure or Usage Notice Provided | Govern               | Privacy Transparency, Awareness and Training, Planning                                                  | Communication, Privacy, Confidentiality                         | Acceptable use, privacy notice, policy communication, awareness                    | AI usage notice, user guidance, acceptable use policy, training material        |
+**Evidence to request:** Approved responsibility matrix with named decision authority.
 
-## Evidence Collection Examples
+**Validation:** Confirm assigned owner and risk acceptance authority with an approver.
 
-A practical AI governance review should collect evidence that proves the organization has considered the following:
+### AI-GOV-002: Undocumented use expands exposure beyond intended scope
 
-| Evidence Area     | Example Artifact                                                                      |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| Ownership         | AI system owner, business owner, security reviewer, approval authority                |
-| Use Case          | AI tool name, business purpose, intended users, approved functions                    |
-| Data Exposure     | Sensitive data restrictions, PII handling rules, redaction requirements               |
-| Access Control    | Approved users, admin roles, RBAC, least privilege review                             |
-| Human Oversight   | Review requirements before operational or customer-impacting use                      |
-| Monitoring        | Logs, risky prompt reviews, alerting process, usage monitoring                        |
-| Incident Response | Escalation path, root cause documentation, containment process                        |
-| Vendor Risk       | Vendor privacy policy, model training terms, data retention terms                     |
-| Compliance        | Control mapping, evidence tracker, audit support notes                                |
-| Training          | AI acceptable use guidance, security awareness, phishing or prompt injection examples |
+**AI RMF function:** MAP. **SP 800-53 reference:** RA-3 — Risk Assessment.
 
-## AI Tool Review Questions
+Risk assessment needs system context and impacts; a use-case statement is only an input.
 
-These questions can be used to evaluate AI tools, SaaS integrations, coding assistants, or LLM-enabled platforms.
+**Evidence to request:** Approved boundary and data-flow diagram plus risk assessment.
 
-1. What business problem does the AI tool solve?
-2. Who owns the AI tool from a business and technical perspective?
-3. What type of data will users submit into the AI tool?
-4. Is confidential, regulated, customer, employee, or authentication data prohibited?
-5. Does the vendor use customer inputs to train models?
-6. Where is data stored, processed, and retained?
-7. Can access be limited by role, group, or approved user list?
-8. Are logs available for security review or audit purposes?
-9. What safeguards exist for prompt injection, data leakage, or unauthorized disclosure?
-10. Is human review required before AI-generated content is used in official decisions, reports, or customer-facing outputs?
-11. What is the incident response process if sensitive data is submitted or exposed?
-12. What evidence would support audit readiness for this AI tool?
+**Validation:** Trace data sources, recipients, prohibited uses and impact assumptions.
 
-## Portfolio Summary
+### AI-GOV-003: Unreviewed AI recommendations enter official remediation plans
 
-This mapping demonstrates practical AI governance capability by connecting AI-specific risks to familiar GRC and security engineering concepts. It shows how NIST/RMF experience can transfer into AI governance, SOC 2 readiness, ISO/IEC 27001-style information security management, vendor risk assessment, control monitoring, and secure AI adoption.
+**AI RMF function:** GOVERN. **SP 800-53 reference:** SA-8 — Security and Privacy Engineering Principles.
+
+Human review is an illustrative engineering safeguard, not an explicit equivalence to SA-8.
+
+**Evidence to request:** Review-gate design and sampled reviewer approvals.
+
+**Validation:** Attempt to publish an unapproved recommendation and verify the gate blocks it.
+
+### AI-GOV-004: Sensitive prompt data crosses unauthorized boundaries
+
+**AI RMF function:** MAP. **SP 800-53 reference:** AC-4 — Information Flow Enforcement.
+
+Data restrictions require enforced flow policy rather than a written prohibition alone.
+
+**Evidence to request:** Approved flow rules, enforcement configuration and synthetic blocked-flow tests.
+
+**Validation:** Attempt prohibited synthetic data flows and inspect redacted decision logs.
+
+### AI-GOV-005: Malicious retrieved text redirects assistant behavior
+
+**AI RMF function:** MEASURE. **SP 800-53 reference:** SI-10 — Information Input Validation.
+
+Input checks support validation, but cannot by themselves prevent semantic prompt injection.
+
+**Evidence to request:** Versioned direct and indirect injection cases with expected and actual outcomes.
+
+**Validation:** Test untrusted retrieved text and confirm tool permissions remain bounded.
+
+### AI-GOV-006: Fabricated findings produce incorrect security recommendations
+
+**AI RMF function:** MEASURE. **SP 800-53 reference:** CA-2 — Control Assessments.
+
+CA-2 supports assessing output-review safeguards; it is not an AI accuracy requirement.
+
+**Evidence to request:** Evaluation set, acceptance thresholds and reviewer decisions.
+
+**Validation:** Compare outputs to trusted references and record unsupported claims and failures.
+
+### AI-GOV-007: Unsafe AI usage goes undetected
+
+**AI RMF function:** MANAGE. **SP 800-53 reference:** AU-6 — Audit Record Review, Analysis, and Reporting.
+
+Reviewing events supports detection; log generation and retention require additional controls.
+
+**Evidence to request:** Redacted event samples, alert rule and dated review record.
+
+**Validation:** Trigger a synthetic event and trace ingestion, alert delivery and analyst review.
+
+### AI-GOV-008: AI data exposure lacks containment and escalation
+
+**AI RMF function:** MANAGE. **SP 800-53 reference:** IR-4 — Incident Handling.
+
+Incident handling supports containment and recovery; broader risk treatment needs separate governance.
+
+**Evidence to request:** AI incident playbook and tabletop results.
+
+**Validation:** Exercise data exposure containment, notification and service-disable steps.
+
+### AI-GOV-009: Unapproved users administer the assistant
+
+**AI RMF function:** GOVERN. **SP 800-53 reference:** AC-2 — Account Management.
+
+Account lifecycle review supports access governance; least privilege also needs AC-6 tailoring.
+
+**Evidence to request:** Role export, provisioning approval and removal test.
+
+**Validation:** Verify unauthorized access is denied and removed users lose access.
+
+### AI-GOV-010: Users mistake generated text for authoritative advice
+
+**AI RMF function:** GOVERN. **SP 800-53 reference:** PT-5 — Privacy Notice.
+
+PT-5 applies to privacy notice where PII processing is relevant; generic AI disclosure is only a conceptual connection.
+
+**Evidence to request:** Rendered AI usage notice and conditional privacy notice.
+
+**Validation:** Inspect user-facing notice and determine whether PII-specific notice requirements apply.
+
+## Evidence handling and gap closure
+
+For real assessments, track artifact ID, system boundary, control reference, artifact location, collection date, review period, reviewer, method (examine/interview/test), outcome and limitations. Keep sensitive artifacts outside the public repository. A policy assertion starts as documented/unverified. Only a qualified review of current, scoped artifacts can support an implementation finding. Failed tests remain gaps; dates and acceptance decisions belong to the accountable owner.
+
+## Official references
+
+- [NIST AI RMF 1.0](https://doi.org/10.6028/NIST.AI.100-1): GOVERN, MAP, MEASURE and MANAGE organizing functions.
+- [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final): control statements and catalog updates. This lab uses selected Rev. 5 base controls, not a full release-level implementation.
+- [NIST Generative AI Profile](https://doi.org/10.6028/NIST.AI.600-1): further risk-scoping guidance, not a claim of implemented profile actions.
+
+SOC 2 and ISO equivalences are outside this lab’s validated mapping scope.
