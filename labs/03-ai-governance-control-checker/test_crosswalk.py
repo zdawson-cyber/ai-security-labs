@@ -20,6 +20,26 @@ class MappingTests(unittest.TestCase):
         self.assertEqual(result["total"], 10)
         self.assertEqual(result["documented"], 10)
 
+    def test_secondary_required_field_missing(self):
+        self.system.pop("business_purpose")
+        result = checker.check(self.controls, self.mapping, self.system)
+        self.assertEqual(result["missing"], 1)
+        self.assertEqual(result["results"][1]["missing_fields"], ["business_purpose"])
+
+    def test_blank_and_non_text_are_missing(self):
+        self.system["system_owner"] = "  "
+        self.system["use_case"] = True
+        self.assertEqual(checker.check(self.controls, self.mapping, self.system)["missing"], 2)
+
+    def test_documented_never_means_verified(self):
+        result = checker.check(self.controls, self.mapping, self.system)
+        self.assertTrue(all(r["implementation_status"] == "Not verified" for r in result["results"]))
+
+    def test_missing_rationale_rejected(self):
+        self.mapping["mappings"][0]["mapping_rationale"] = ""
+        with self.assertRaises(ValueError):
+            checker.check(self.controls, self.mapping, self.system)
+
     def test_missing_documentation(self):
         self.system.pop("system_owner")
         self.assertEqual(checker.check(self.controls, self.mapping, self.system)["missing"], 1)

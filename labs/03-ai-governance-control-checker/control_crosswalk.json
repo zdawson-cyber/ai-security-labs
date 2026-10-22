@@ -1,16 +1,22 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "disclaimer": "Non-authoritative portfolio mapping. Control presence does not establish implemented effectiveness, NIST AI RMF conformance, federal ATO, ISO certification, or SOC 2 attestation.",
   "mappings": [
     {
       "control_id": "AI-GOV-001",
       "ai_rmf_function": "GOVERN",
-      "nist_800_53_reference": "PM-1",
+      "nist_800_53_reference": "PM-2",
       "implementation_expectation": "Accountable AI system owner",
       "evidence_field": "system_owner",
       "owner": "GRC lead",
       "remediation": "Document owner and approval authority",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Unowned AI deployment delays risk decisions",
+      "nist_control_title": "Information Security Program Leadership Role",
+      "mapping_rationale": "A designated program leadership role supports accountability; a system owner record alone does not satisfy PM-2.",
+      "evidence_example": "Approved responsibility matrix with named decision authority",
+      "validation_step": "Confirm assigned owner and risk acceptance authority with an approver",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-002",
@@ -20,17 +26,29 @@
       "evidence_field": "use_case",
       "owner": "Business owner",
       "remediation": "Record purpose, user groups and impact",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Undocumented use expands exposure beyond intended scope",
+      "nist_control_title": "Risk Assessment",
+      "mapping_rationale": "Risk assessment needs system context and impacts; a use-case statement is only an input.",
+      "evidence_example": "Approved boundary and data-flow diagram plus risk assessment",
+      "validation_step": "Trace data sources, recipients, prohibited uses and impact assumptions",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-003",
       "ai_rmf_function": "GOVERN",
-      "nist_800_53_reference": "CA-7",
+      "nist_800_53_reference": "SA-8",
       "implementation_expectation": "Human review before consequential decisions",
       "evidence_field": "human_oversight",
       "owner": "AI product owner",
       "remediation": "Document mandatory human review gate",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Unreviewed AI recommendations enter official remediation plans",
+      "nist_control_title": "Security and Privacy Engineering Principles",
+      "mapping_rationale": "Human review is an illustrative engineering safeguard, not an explicit equivalence to SA-8.",
+      "evidence_example": "Review-gate design and sampled reviewer approvals",
+      "validation_step": "Attempt to publish an unapproved recommendation and verify the gate blocks it",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-004",
@@ -40,7 +58,13 @@
       "evidence_field": "data_handling",
       "owner": "Privacy lead",
       "remediation": "Document and validate prohibited data flows",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Sensitive prompt data crosses unauthorized boundaries",
+      "nist_control_title": "Information Flow Enforcement",
+      "mapping_rationale": "Data restrictions require enforced flow policy rather than a written prohibition alone.",
+      "evidence_example": "Approved flow rules, enforcement configuration and synthetic blocked-flow tests",
+      "validation_step": "Attempt prohibited synthetic data flows and inspect redacted decision logs",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-005",
@@ -50,7 +74,13 @@
       "evidence_field": "prompt_injection_controls",
       "owner": "AppSec team",
       "remediation": "Implement and test adversarial input handling",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Malicious retrieved text redirects assistant behavior",
+      "nist_control_title": "Information Input Validation",
+      "mapping_rationale": "Input checks support validation, but cannot by themselves prevent semantic prompt injection.",
+      "evidence_example": "Versioned direct and indirect injection cases with expected and actual outcomes",
+      "validation_step": "Test untrusted retrieved text and confirm tool permissions remain bounded",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-006",
@@ -60,7 +90,13 @@
       "evidence_field": "output_validation",
       "owner": "Model owner",
       "remediation": "Establish eval criteria and reviewer evidence",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Fabricated findings produce incorrect security recommendations",
+      "nist_control_title": "Control Assessments",
+      "mapping_rationale": "CA-2 supports assessing output-review safeguards; it is not an AI accuracy requirement.",
+      "evidence_example": "Evaluation set, acceptance thresholds and reviewer decisions",
+      "validation_step": "Compare outputs to trusted references and record unsupported claims and failures",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-007",
@@ -70,7 +106,13 @@
       "evidence_field": "monitoring_logging",
       "owner": "Security operations",
       "remediation": "Implement logging, alerting and retention",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Unsafe AI usage goes undetected",
+      "nist_control_title": "Audit Record Review, Analysis, and Reporting",
+      "mapping_rationale": "Reviewing events supports detection; log generation and retention require additional controls.",
+      "evidence_example": "Redacted event samples, alert rule and dated review record",
+      "validation_step": "Trigger a synthetic event and trace ingestion, alert delivery and analyst review",
+      "priority": "Medium"
     },
     {
       "control_id": "AI-GOV-008",
@@ -80,7 +122,13 @@
       "evidence_field": "risk_response_plan",
       "owner": "Risk owner",
       "remediation": "Define escalation and corrective actions",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "AI data exposure lacks containment and escalation",
+      "nist_control_title": "Incident Handling",
+      "mapping_rationale": "Incident handling supports containment and recovery; broader risk treatment needs separate governance.",
+      "evidence_example": "AI incident playbook and tabletop results",
+      "validation_step": "Exercise data exposure containment, notification and service-disable steps",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-009",
@@ -90,7 +138,13 @@
       "evidence_field": "access_control",
       "owner": "IAM owner",
       "remediation": "Define and periodically review authorized users",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Unapproved users administer the assistant",
+      "nist_control_title": "Account Management",
+      "mapping_rationale": "Account lifecycle review supports access governance; least privilege also needs AC-6 tailoring.",
+      "evidence_example": "Role export, provisioning approval and removal test",
+      "validation_step": "Verify unauthorized access is denied and removed users lose access",
+      "priority": "High"
     },
     {
       "control_id": "AI-GOV-010",
@@ -100,7 +154,14 @@
       "evidence_field": "user_disclosure",
       "owner": "Policy owner",
       "remediation": "Publish and verify AI use notice",
-      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately."
+      "mapping_note": "Illustrative conceptual alignment; assess exact framework requirements separately.",
+      "risk_scenario": "Users mistake generated text for authoritative advice",
+      "nist_control_title": "Privacy Notice",
+      "mapping_rationale": "PT-5 applies to privacy notice where PII processing is relevant; generic AI disclosure is only a conceptual connection.",
+      "evidence_example": "Rendered AI usage notice and conditional privacy notice",
+      "validation_step": "Inspect user-facing notice and determine whether PII-specific notice requirements apply",
+      "priority": "Medium"
     }
-  ]
+  ],
+  "reference_basis": "NIST AI RMF 1.0 functions; selected SP 800-53 Rev. 5 base controls. Educational interpretations, not an official crosswalk or baseline."
 }

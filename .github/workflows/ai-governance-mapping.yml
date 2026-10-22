@@ -19,6 +19,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate crosswalk coverage and failure cases
-        run: python -m unittest discover -s labs/03-ai-governance-control-checker -p test_crosswalk.py -v
+        run: python -m unittest discover -s labs/03-ai-governance-control-checker -p 'test_*.py' -v
       - name: Check documentation presence
         run: python labs/03-ai-governance-control-checker/validate_crosswalk.py > /tmp/ai-governance-report.json
+      - name: Reproduce mapping evidence-gap report
+        run: |
+          python labs/03-ai-governance-control-checker/generate_mapping_report.py
+          git diff --exit-code -- labs/03-ai-governance-control-checker/evidence_gap_report.md
