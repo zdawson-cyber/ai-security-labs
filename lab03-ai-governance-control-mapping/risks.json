@@ -1,0 +1,86 @@
+[
+  {
+    "id": "AI-001",
+    "risk": "Prompt injection redirects assistant behavior",
+    "likelihood": 4,
+    "impact": 4,
+    "controls": [
+      "SI-10",
+      "AC-3",
+      "SA-11"
+    ],
+    "ai_rmf_function": "MEASURE",
+    "evidence_request": "Adversarial test logs and authorization tests",
+    "unverified_gap": "No adversarial evaluation recorded"
+  },
+  {
+    "id": "AI-002",
+    "risk": "Sensitive data exposed in prompts or responses",
+    "likelihood": 4,
+    "impact": 5,
+    "controls": [
+      "AC-4",
+      "SC-8",
+      "SI-4"
+    ],
+    "ai_rmf_function": "MANAGE",
+    "evidence_request": "Data flow diagram and DLP test results",
+    "unverified_gap": "No verified data flow or DLP evidence"
+  },
+  {
+    "id": "AI-003",
+    "risk": "Unreliable or fabricated model output",
+    "likelihood": 4,
+    "impact": 3,
+    "controls": [
+      "SA-11",
+      "CA-7",
+      "SI-7"
+    ],
+    "ai_rmf_function": "MEASURE",
+    "evidence_request": "Evaluation dataset and human review logs",
+    "unverified_gap": "No accuracy threshold documented"
+  },
+  {
+    "id": "AI-004",
+    "risk": "AI tools receive excessive permissions",
+    "likelihood": 3,
+    "impact": 5,
+    "controls": [
+      "AC-6",
+      "AC-3",
+      "AU-12"
+    ],
+    "ai_rmf_function": "MAP",
+    "evidence_request": "Tool permissions matrix and audit events",
+    "unverified_gap": "No least-privilege verification"
+  },
+  {
+    "id": "AI-005",
+    "risk": "Third-party AI supply-chain compromise",
+    "likelihood": 3,
+    "impact": 5,
+    "controls": [
+      "SR-3",
+      "SA-9",
+      "RA-5"
+    ],
+    "ai_rmf_function": "GOVERN",
+    "evidence_request": "Supplier assessment and component inventory",
+    "unverified_gap": "No vendor assessment collected"
+  },
+  {
+    "id": "AI-006",
+    "risk": "Insufficient AI-specific logging and response",
+    "likelihood": 4,
+    "impact": 4,
+    "controls": [
+      "AU-2",
+      "AU-6",
+      "IR-4"
+    ],
+    "ai_rmf_function": "MANAGE",
+    "evidence_request": "Event taxonomy, monitoring samples, tabletop records",
+    "unverified_gap": "No AI incident playbook verified"
+  }
+]
