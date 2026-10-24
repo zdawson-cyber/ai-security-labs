@@ -20,7 +20,7 @@ This repository documents practical AI security labs designed to demonstrate how
 |---|---|---|
 | 01 | AI Prompt Injection Risk Analyzer | Complete |
 | 02 | AI Data Leakage Detection Lab | Complete |
-| 03 | AI Governance Control Mapping | In Progress |
+| 03 | [AI Governance Control Mapping](lab03-ai-governance-control-mapping/) | Complete (synthetic lab) |
 | 04 | Secure AI Policy Checker | Planned |
 | 05 | Azure OpenAI Security Review | Planned |
 
